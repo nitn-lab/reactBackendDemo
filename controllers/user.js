@@ -72,3 +72,21 @@ export const signup = async (req, res) => {
     console.log(error);
   }
 };
+
+
+export const findUser = async (req, res) => {
+  // res.send("This Works");
+  const { name, psi, empCode } = req.body;
+
+  try {
+    let userList=[]
+    if(empCode){userList = await UserModal.find({empCode:empCode});}
+    else if(psi){userList = await UserModal.find({psi:psi});}
+    else if(name){userList = await UserModal.find({name:name});}
+    
+    // console.log("getPosts controller", postMessages);
+    res.status(200).json(userList);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
