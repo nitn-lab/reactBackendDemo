@@ -5,6 +5,8 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 import userRouter from "./routes/user.js";
+import alluserRouter from "./routes/alluser.js";
+
 const app = express();
 dotenv.config();
 
@@ -15,6 +17,7 @@ app.use(cors());
 
 app.use('/posts', postRoutes);
 app.use("/user", userRouter);
+app.use("/alluser", alluserRouter);
 const CONNECTION_URL = "mongodb+srv://fullStack:fullStack8412@cluster0.fgiv43w.mongodb.net/?retryWrites=true&w=majority";
 const PORT = process.env.PORT || 5000;
 
