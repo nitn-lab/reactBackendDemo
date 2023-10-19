@@ -73,29 +73,32 @@ const postSchema = mongoose.Schema({
     },
   ],
 
-  CL: "String",
+  CL: { type: String },
 
-  EL: "String",
+  EL: { type: String },
 
-  HPL: "String",
+  HPL: { type: String },
 
-  CCL: "String",
+  CCL: { type: String },
 
-  Maternity: "String",
+  Maternity: { type: String },
 
-  Others: "String",
-
-  ConductedBy: "String",
-
-  DateOfAwardofCertification: "String",
-
-  TrainingDetails: "String",
-
-  NameOfTrainingInstitute: "String",
-
-  Duration: "String",
-
-  DateOfCompletion: "String",
+  Others: { type: String },
+  Qualification: [
+    {
+      Course: { type: String },
+      ConductedBy: { type: String },
+      DateOfAwardofCertification: { type: String },
+    },
+  ],
+  Training: [
+    {
+      TrainingDetails: { type: String },
+      NameOfTrainingInstitute: { type: String },
+      DateOfCompletion: { type: String },
+      Duration: { type: String },
+    },
+  ],
 });
 
 var PostMessage = mongoose.model("PostMessage", postSchema);
