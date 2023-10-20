@@ -2,25 +2,26 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 import UserModal from "../models/user.js";
-
+import AllUsersModel from "../models/allUsers.js";
 const secret = "test";
 
 export const signin = async (req, res) => {
-  const { email, password, empCode } = req.body;
+  const { email, password, EmpCode } = req.body;
 
   try {
-    const oldUser = await UserModal.findOne({ email });
-
-    const oldEmpCode = await UserModal.findOne({ empCode });
+    // console.log("hello")
+    const oldUser = await AllUsersModel.findOne({ email });
+    // console.log("oldUser",oldUser,oldUser.Password,password)
+    const oldEmpCode = await AllUsersModel.findOne({ EmpCode });
 
     if (!oldEmpCode)
-      return res.status(404).json({ message: "Employee Already Exsist" });
+      return res.status(404).json({ message: "User doesn't Exsist" });
 
     if (!oldUser)
       return res.status(404).json({ message: "User doesn't exist" });
 
-    const isPasswordCorrect = await bcrypt.compare(password, oldUser.password);
-
+    const isPasswordCorrect = await bcrypt.compare(password, oldUser.Password);
+    //  console.log("pass",isPasswordCorrect)
     if (!isPasswordCorrect)
       return res.status(400).json({ message: "Invalid credentials" });
 
@@ -30,7 +31,7 @@ export const signin = async (req, res) => {
 
     res.status(200).json({ result: oldUser, token });
   } catch (err) {
-    res.status(500).json({ message: "Something went wrong" });
+    res.status(500).json({ message: err});
   }
 };
 

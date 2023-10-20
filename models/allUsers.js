@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
 const allUserSchema = mongoose.Schema({
+    email: { type: String, required: true },
     Name:String,
     Rank:String,
     EmpCode:{ type : String , unique : true, required : true, dropDups: true },
@@ -21,24 +22,49 @@ const allUserSchema = mongoose.Schema({
     From:String,
     To:String,
     Duration:String,
-    RewardFor:String,
-    By_whom:String,
-    OB_No:String,
-    PunismentFor:String,
-    ByWhome:String,
-    OBNo:String,
+    Posting: [
+      {
+        placeOfPosting: { type: String, required: true },
+        From: { type: String, required: true },
+        to: { type: String, required: true },
+        duration: { type: String, required: true },
+      },
+    ],
+    Rewards: [
+      {
+        RewardFor: { type: String, required: true },
+        By_whom: { type: String },
+        OB_No: { type: String },
+      },
+    ],
+    Punishments: [
+      {
+        PunismentFor: { type: String },
+        ByWhome: { type: String },
+        OBNo: { type: String },
+      },
+    ],
     CL:String,
     EL:String,
     HPL:String,
     CCL:String,
     Maternity:String,
     Others:String,
-    ConductedBy:String,
-    DateOfAwardofCertification:String,
-    TrainingDetails:String,
-    NameOfTrainingInstitute:String,
-    Duration:String,
-    DateOfCompletion:String,
+    Qualification: [
+      {
+        Course: { type: String },
+        ConductedBy: { type: String },
+        DateOfAwardofCertification: { type: String },
+      },
+    ],
+    Training: [
+      {
+        TrainingDetails: { type: String },
+        NameOfTrainingInstitute: { type: String },
+        DateOfCompletion: { type: String },
+        Duration: { type: String },
+      },
+    ],
     createdAt: {
         type: Date,
         default: new Date()
