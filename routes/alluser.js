@@ -4,7 +4,7 @@ import { getUsers,findUser, addUser,updateUserInfo, deleteUser,findUserById } fr
 
 const router = express.Router();
 
-router.post("/getalluser", getUsers);
+router.get("/getalluser", getUsers);
 router.post("/adduser", addUser);
 router.post("/updateuser/:id", updateUserInfo);
 router.delete("/deleteuser/:id", deleteUser);
