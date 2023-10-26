@@ -18,10 +18,6 @@ const allUserSchema = mongoose.Schema({
     EdnQualification:String,
     Category:String,
     PermanentAddress:String,
-    PlaceOfPosting:String,
-    From:String,
-    To:String,
-    Duration:String,
     Posting: [
       {
         placeOfPosting: { type: String, required: true },
