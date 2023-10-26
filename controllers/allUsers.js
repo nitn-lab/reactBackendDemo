@@ -1,6 +1,19 @@
 import mongoose from "mongoose";
 import AllUsers from "../models/allUsers.js";
 
+
+
+export const getUsers = async (req, res) => {
+  // res.send("This Works");
+  try {
+    const allUsers = await AllUsers.find();
+    // console.log("getPosts controller", postMessages);
+    res.status(200).json(allUsers);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
+};
+
 export const addUser = async (req, res) => {
   //   res.send("Post Created");
   const userdata = req.body;
