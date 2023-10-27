@@ -24,7 +24,7 @@ const allUserSchema = mongoose.Schema({
         From: { type: String},
         to: { type: String},
         duration: { type: String},
-        tableData: {type: String}
+        tableData: {id: String}
       },
     ],
     Rewards: [
@@ -32,7 +32,7 @@ const allUserSchema = mongoose.Schema({
         RewardFor: { type: String},
         By_whom: { type: String },
         OB_No: { type: String },
-        tableData: {type: String}
+        tableData: {id: String}
       },
     ],
     Punishments: [
@@ -40,7 +40,7 @@ const allUserSchema = mongoose.Schema({
         PunismentFor: { type: String },
         ByWhome: { type: String },
         OBNo: { type: String },
-        tableData: {type: String}
+        tableData: {id: String}
       },
     ],
     CL:String,
@@ -54,7 +54,7 @@ const allUserSchema = mongoose.Schema({
         Course: { type: String },
         ConductedBy: { type: String },
         DateOfAwardofCertification: { type: String },
-        tableData: {type: String}
+        tableData: {id: String}
       },
     ],
     Training: [
@@ -63,7 +63,7 @@ const allUserSchema = mongoose.Schema({
         NameOfTrainingInstitute: { type: String },
         DateOfCompletion: { type: String },
         Duration: { type: String },
-        tableData: {type: String}
+        tableData: {id: String}
       },
     ],
     createdAt: {
