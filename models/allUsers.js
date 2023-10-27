@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import bcrypt from "bcryptjs";
 
 const allUserSchema = mongoose.Schema({
-    email: { type: String, required: true },
+    email: { type: String},
     Name:String,
     Rank:String,
     EmpCode:{ type : String , unique : true, required : true, dropDups: true },
@@ -20,17 +20,19 @@ const allUserSchema = mongoose.Schema({
     PermanentAddress:String,
     Posting: [
       {
-        placeOfPosting: { type: String, required: true },
-        From: { type: String, required: true },
-        to: { type: String, required: true },
-        duration: { type: String, required: true },
+        placeOfPosting: { type: String},
+        From: { type: String},
+        to: { type: String},
+        duration: { type: String},
+        tableData: {type: String}
       },
     ],
     Rewards: [
       {
-        RewardFor: { type: String, required: true },
+        RewardFor: { type: String},
         By_whom: { type: String },
         OB_No: { type: String },
+        tableData: {type: String}
       },
     ],
     Punishments: [
@@ -38,6 +40,7 @@ const allUserSchema = mongoose.Schema({
         PunismentFor: { type: String },
         ByWhome: { type: String },
         OBNo: { type: String },
+        tableData: {type: String}
       },
     ],
     CL:String,
@@ -51,6 +54,7 @@ const allUserSchema = mongoose.Schema({
         Course: { type: String },
         ConductedBy: { type: String },
         DateOfAwardofCertification: { type: String },
+        tableData: {type: String}
       },
     ],
     Training: [
@@ -59,6 +63,7 @@ const allUserSchema = mongoose.Schema({
         NameOfTrainingInstitute: { type: String },
         DateOfCompletion: { type: String },
         Duration: { type: String },
+        tableData: {type: String}
       },
     ],
     createdAt: {
