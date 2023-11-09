@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import AllUsers from "../models/allUsers.js";
 
-import csv from "csvtojson";
-import { Data } from "./jsonData.js";
 
 export const getUsers = async (req, res) => {
   // res.send("This Works");
@@ -16,7 +14,7 @@ export const getUsers = async (req, res) => {
 };
 
 export const addUser = async (req, res) => {
-    console.log("running");
+    // console.log("running", req);
   const userdata = req.body;
   const newUser = new AllUsers({
     ...userdata,

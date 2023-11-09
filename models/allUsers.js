@@ -15,6 +15,7 @@ const allUserSchema = mongoose.Schema({
     FathersOrHusbandsName:String,
     Dob:{type: Date},
     Doa:{type: Date},
+    Dop: {type: Date},
     EdnQualification:String,
     Category:String,
     PermanentAddress:String,
