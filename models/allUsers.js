@@ -5,10 +5,10 @@ const allUserSchema = mongoose.Schema({
     email: { type: String},
     Name:String,
     Rank:String,
-    EmpCode:{ type : String , unique : true,  dropDups: true },
-    BeltNo:{ type : String , unique : true,  dropDups: true },
-    PSINo:{ type : String , unique : true, required : true, dropDups: true },
-    ProfileImg:String,
+    EmpCode:{ type : String , unique : true},
+    BeltNo:{ type : String , unique : true },
+    PSINo:{ type : Number , unique : true },
+    ProfileImg:String, 
     isAdmin:Boolean,
     Level:String,
     Password:{type:String},
@@ -18,6 +18,7 @@ const allUserSchema = mongoose.Schema({
     EdnQualification:String,
     Category:String,
     PermanentAddress:String,
+    Gender:String,
     Posting: [
       {
         placeOfPosting: { type: String},

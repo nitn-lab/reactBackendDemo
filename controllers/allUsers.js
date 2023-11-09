@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
 import AllUsers from "../models/allUsers.js";
 
-
-// const csv=require('csvtojson')
+import csv from "csvtojson";
+import { Data } from "./jsonData.js";
 
 export const getUsers = async (req, res) => {
   // res.send("This Works");
@@ -16,9 +16,12 @@ export const getUsers = async (req, res) => {
 };
 
 export const addUser = async (req, res) => {
-  //   res.send("Post Created");
+    console.log("running");
   const userdata = req.body;
-  const newUser = new AllUsers({ ...userdata, createdAt: new Date().toISOString() });
+  const newUser = new AllUsers({
+    ...userdata,
+    createdAt: new Date().toISOString(),
+  });
   // console.log("createPost controller", newUser);
   try {
     await newUser.save();
@@ -29,7 +32,7 @@ export const addUser = async (req, res) => {
 };
 
 export const updateUserInfo = async (req, res) => {
-  const { id: _id } = req.params
+  const { id: _id } = req.params;
   const userinfo = req.body;
   if (!mongoose.Types.ObjectId.isValid(_id))
     return res.status(404).send("No user with that id");
@@ -53,30 +56,31 @@ export const deleteUser = async (req, res) => {
 };
 
 export const findUser = async (req, res) => {
-    // res.send("This Works");
-    const {query} = req.body;
-  
-    try {
-      let userList=[]
-      userList=await AllUsers.find({
-        $or: [
-        { Name: { $regex: query, $options: 'i' } }, 
-        { PSINo: { $regex: query, $options: 'i' } }, 
-        { BeltNo: { $regex: query, $options: 'i' } }, 
-      ]})
-      res.status(200).json(userList);
-    } catch (error) {
-      res.status(404).json({ message: error.message });
-    }
+  // res.send("This Works");
+  const { query } = req.body;
+
+  try {
+    let userList = [];
+    userList = await AllUsers.find({
+      $or: [
+        { Name: { $regex: query, $options: "i" } },
+        { PSINo: { $regex: query, $options: "i" } },
+        { BeltNo: { $regex: query, $options: "i" } },
+      ],
+    });
+    res.status(200).json(userList);
+  } catch (error) {
+    res.status(404).json({ message: error.message });
+  }
 };
 
 export const findUserById = async (req, res) => {
   // res.send("This Works");
-  const { id: _id } = req.params
+  const { id: _id } = req.params;
 
   try {
-    let userList=[]
-    userList=await AllUsers.findById({_id})
+    let userList = [];
+    userList = await AllUsers.findById({ _id });
     res.status(200).json(userList);
   } catch (error) {
     res.status(404).json({ message: error.message });
