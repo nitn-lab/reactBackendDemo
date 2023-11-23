@@ -57,7 +57,7 @@ export const deleteUser = async (req, res) => {
 export const findUser = async (req, res) => {
   // res.send("This Works");
   const { query } = req.body;
-
+// console.log("query", query);
   try {
     let userList = [];
     userList = await AllUsers.find({
@@ -67,6 +67,7 @@ export const findUser = async (req, res) => {
         { BeltNo: { $regex: query, $options: "i" } },
       ],
     });
+    // console.log("userList", userList);
     res.status(200).json(userList);
   } catch (error) {
     res.status(404).json({ message: error.message });

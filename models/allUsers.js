@@ -7,7 +7,7 @@ const allUserSchema = mongoose.Schema({
     Rank:String,
     EmpCode:{ type : String },
     BeltNo:{ type : String },
-    PSINo:{ type : Number , unique : true },
+    PSINo:{ type : String , unique : true },
     ProfileImg:String, 
     isAdmin:Boolean,
     Level:String,
