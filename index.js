@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import postRoutes from './routes/posts.js';
 import userRouter from "./routes/user.js";
 import alluserRouter from "./routes/alluser.js";
-import { addUser } from './controllers/allUsers.js';
+// import {deleteUser} from './controllers/allUsers.js';
 const app = express();
 dotenv.config();
 
@@ -26,6 +26,7 @@ mongoose.connect(CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: tr
 .then(() => app.listen(PORT, () => console.log(`Server running on port : ${PORT}`)))
 .catch((error) => console.log(error.message))
 
+// deleteUser();
 // mongoose.set('useFindAndModify', false); 
 
 

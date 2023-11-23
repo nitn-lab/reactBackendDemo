@@ -49,6 +49,7 @@ export const deleteUser = async (req, res) => {
     return res.status(404).send("No user found with that id");
 
   await AllUsers.findByIdAndRemove(id);
+  // await AllUsers.deleteMany({})
 
   res.json({ message: "User deleted successfully." });
 };
